@@ -1,0 +1,68 @@
+name: frontend
+version: 0.1
+cabal-version: >= 1.8
+build-type: Simple
+
+library
+  hs-source-dirs: src
+  build-depends:
+      base
+    , common
+    , containers
+    , exceptions
+    , ghcjs-dom
+    , jsaddle
+    , lens
+    , MonadRandom
+    , monoidal-containers
+    , obelisk-executable-config-lookup
+    , obelisk-frontend
+    , obelisk-generated-static
+    , obelisk-route
+    , random
+    , reflex-dom-core
+    , rhyolite-common
+    , rhyolite-frontend
+    , text
+    , time
+  exposed-modules:
+    Frontend
+  default-extensions:
+    BangPatterns
+    ConstraintKinds
+    DataKinds
+    DeriveFoldable
+    DeriveGeneric
+    DeriveTraversable
+    DerivingStrategies
+    EmptyCase
+    EmptyDataDecls
+    GADTs
+    GeneralizedNewtypeDeriving
+    KindSignatures
+    LambdaCase
+    MultiParamTypeClasses
+    OverloadedStrings
+    PolyKinds
+    RankNTypes
+    ScopedTypeVariables
+    StandaloneDeriving
+    TupleSections
+    TypeApplications
+    TypeFamilies
+  ghc-options: -Wall
+
+executable frontend
+  main-is: main.hs
+  hs-source-dirs: src-bin
+  build-depends:
+      base
+    , common
+    , obelisk-frontend
+    , obelisk-route
+    , reflex-dom
+    , frontend
+  --TODO: Make these ghc-options optional
+  ghc-options: -threaded
+  if os(darwin)
+     ghc-options: -dynamic
